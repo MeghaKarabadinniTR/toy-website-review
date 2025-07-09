@@ -28,6 +28,18 @@ resource appServiceApp 'Microsoft.Web/sites@2022-03-01' = {
   properties: {
     serverFarmId: appServicePlan.id
     httpsOnly: true
+    siteConfig: {
+      appSettings: [
+        {
+          name: 'StorageAccountName'
+          value: storageAccountName
+        }
+        {
+          name: 'ProcessOrderQueueName'
+          value: processOrderQueueName
+        }
+      ]
+    }
   }
 }
 
